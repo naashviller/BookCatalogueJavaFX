@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/2.2" fx:controller="ru.ivmiit.controller.RegistrationController">
+    <Text fx:id="regtext" layoutX="244.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Регистрация">
+        <font>
+            <Font size="20.0" fx:id="x1"/>
+        </font>
+    </Text>
+    <TextField fx:id="login" layoutX="174.0" layoutY="81.0" prefHeight="36.0" prefWidth="252.607421875"/>
+    <Text fx:id="searchLogin" font="$x1" layoutX="92.0" layoutY="107.0" scaleX="0.9006208323752587"
+          scaleY="0.9992657856093979" strokeType="OUTSIDE" strokeWidth="0.0" text="Логин"/>
+    <TextField fx:id="password" layoutX="174.0" layoutY="143.0" prefHeight="36.0" prefWidth="252.607421875"/>
+    <Text fx:id="searchPassword" font="$x1" layoutX="91.0" layoutY="169.0" scaleX="0.9006208323752587"
+          scaleY="0.9992657856093979" strokeType="OUTSIDE" strokeWidth="0.0" text="Пароль"/>
+    <TextField fx:id="email" layoutX="174.0" layoutY="200.0" prefHeight="36.0" prefWidth="252.607421875"/>
+    <Text fx:id="searchEmail" font="$x1" layoutX="97.0" layoutY="236.0" scaleX="0.9006208323752587"
+          scaleY="0.9992657856093979" strokeType="OUTSIDE" strokeWidth="0.0" text="Почта"/>
+    <Button fx:id="regButton" font="$x1" layoutX="190.0" layoutY="308.0" mnemonicParsing="false" onAction="#register"
+            prefHeight="36.0" prefWidth="221.0" text="Зарегистрироваться"/>
+    <Text fx:id="error" layoutX="206.0" layoutY="53.0" scaleX="2.2083403396931423" scaleY="3.0668134710601"
+          strokeType="OUTSIDE" strokeWidth="0.0" text="Пожалуйста, заполните все поля!"/>
+    <Button fx:id="back" layoutX="12.0" layoutY="344.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="82.0"
+            text="Назад">
+        <font>
+            <Font size="15.0"/>
+        </font>
+    </Button>
+</AnchorPane>

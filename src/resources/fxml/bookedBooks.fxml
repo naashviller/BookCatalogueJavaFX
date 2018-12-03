@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/2.2" fx:controller="ru.ivmiit.controller.BookedController">
+    <children>
+        <Text layoutX="192.0" layoutY="52.0" scaleX="1.4454393040010876" scaleY="1.53248" strokeType="OUTSIDE"
+              strokeWidth="0.0" text="Забронированные книги:">
+            <font>
+                <Font name="Calibri" size="20.0"/>
+            </font>
+        </Text>
+        <ListView fx:id="booked" layoutX="14.0" layoutY="70.0" prefHeight="271.0" prefWidth="572.0"/>
+        <Button fx:id="back" layoutX="249.0" layoutY="358.0" mnemonicParsing="false" onAction="#goBack"
+                prefHeight="29.0" prefWidth="102.0" text="Назад">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Button>
+    </children>
+</AnchorPane>

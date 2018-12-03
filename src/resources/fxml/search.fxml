@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/2.2" fx:controller="ru.ivmiit.controller.SearchController">
+    <TextField fx:id="searchField" layoutX="14.0" layoutY="37.0" prefHeight="32.0" prefWidth="229.0"
+               promptText="ПОИСК"/>
+    <ComboBox fx:id="itemChoose" layoutX="260.0" layoutY="37.0" prefHeight="32.0" prefWidth="109.0" value="Названию"
+              visibleRowCount="3">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Названию"/>
+                <String fx:value="Автору"/>
+                <String fx:value="Жанру"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+    <Button fx:id="searchButton" layoutX="391.0" layoutY="37.0" mnemonicParsing="false" onAction="#search"
+            prefHeight="32.0" prefWidth="88.0" text="ПОИСК"/>
+    <Text fx:id="searchLabel" layoutX="56.0" layoutY="103.0" scaleX="1.1616774030567134" scaleY="1.315712187958884"
+          strokeType="OUTSIDE" strokeWidth="0.0" text="РЕЗУЛЬТАТЫ ПОИСКА">
+        <font>
+            <Font size="16.0" fx:id="x1"/>
+        </font>
+    </Text>
+    <Text layoutX="260.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Поиск по">
+        <font>
+            <Font size="15.0"/>
+        </font>
+    </Text>
+    <ListView fx:id="results" layoutX="14.0" layoutY="110.0" prefHeight="276.0" prefWidth="377.0"/>
+    <ListView fx:id="statusResults" layoutX="410.0" layoutY="110.0" prefHeight="276.0" prefWidth="176.0"/>
+    <Text fx:id="statusLabel" font="$x1" layoutX="423.0" layoutY="103.0" scaleX="1.1616774030567134"
+          scaleY="1.315712187958884" strokeType="OUTSIDE" strokeWidth="0.0" text="СТАТУС"/>
+    <Text fx:id="nothingFoundText" layoutX="144.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0"
+          text="НИЧЕГО НЕ НАЙДЕНО">
+        <font>
+            <Font size="30.0"/>
+        </font>
+    </Text>
+</AnchorPane>
