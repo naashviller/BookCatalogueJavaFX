@@ -2,14 +2,20 @@ package ru.ivmiit.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
+import ru.ivmiit.app.Main;
 import ru.ivmiit.model.Book;
 import ru.ivmiit.model.enums.BookStatus;
 
@@ -21,6 +27,8 @@ public class SearchController extends BaseController implements Initializable {
     private TextField searchField;
     @FXML
     private Button searchButton;
+    @FXML
+    private Button back;
     @FXML
     private ListView results;
     @FXML
@@ -53,6 +61,10 @@ public class SearchController extends BaseController implements Initializable {
         headers.add("user-agent",
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
                         "(KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
+
+
+
+
 
     }
 
@@ -133,5 +145,19 @@ public class SearchController extends BaseController implements Initializable {
         statusResults.setVisible(true);
         searchLabel.setVisible(true);
         nothingFoundText.setVisible(false);
+    }
+
+
+    public void goBack(ActionEvent event) throws Exception {
+        Stage stage = (Stage) back.getScene().getWindow();
+
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/mainPage.fxml"));
+        Parent root1 = fxmlLoader.load();
+        stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        stage.setScene(new Scene(root1));
+        stage.show();
     }
 }

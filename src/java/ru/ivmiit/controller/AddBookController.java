@@ -12,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import ru.ivmiit.app.Main;
-import ru.ivmiit.dto.BookDto;
 import ru.ivmiit.model.Author;
 
 import java.net.URL;
@@ -69,16 +68,4 @@ public class AddBookController extends BaseController implements Initializable {
         template.postForEntity(ADDBOOK_API, entity, String.class);
     }
 
-    /*public void goBack (ActionEvent event) throws Exception {
-        //Close current
-        Stage stage = (Stage) back.getScene().getWindow();
-        // do what you have to do
-        stage.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/authorization.fxml"));
-        Parent root1 = fxmlLoader.load();
-        stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(new Scene(root1));
-        stage.show();
-    }*/
 }

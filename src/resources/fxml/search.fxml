@@ -43,4 +43,6 @@
             <Font size="30.0"/>
         </font>
     </Text>
+    <Button fx:id="back" layoutX="498.0" layoutY="37.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="88.0" onAction="#goBack"
+            text="Назад"/>
 </AnchorPane>
