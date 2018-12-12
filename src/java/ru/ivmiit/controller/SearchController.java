@@ -10,12 +10,11 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
-import ru.ivmiit.app.Main;
+
 import ru.ivmiit.model.Book;
 import ru.ivmiit.model.enums.BookStatus;
 
@@ -25,8 +24,6 @@ import java.util.*;
 public class SearchController extends BaseController implements Initializable {
     @FXML
     private TextField searchField;
-    @FXML
-    private Button searchButton;
     @FXML
     private Button back;
     @FXML
@@ -45,7 +42,6 @@ public class SearchController extends BaseController implements Initializable {
     private RestTemplate restTemplate;
 
     private final String BOOK_API = "http://localhost:80/books/search/";
-    public static final String FINDBOOK_URL = "fxml/search.fxml";
 
     public void initialize(URL location, ResourceBundle resources) {
         searchLabel.setVisible(false);
@@ -56,16 +52,6 @@ public class SearchController extends BaseController implements Initializable {
         List<HttpMessageConverter<?>> converters = new ArrayList<>();
         converters.add(new MappingJackson2HttpMessageConverter());
         restTemplate = new RestTemplate(converters);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        headers.add("user-agent",
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
-                        "(KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
-
-
-
-
-
     }
 
     public void search(ActionEvent event) throws Exception {
@@ -98,12 +84,23 @@ public class SearchController extends BaseController implements Initializable {
             }
         } else if (Objects.equals(output, "Названию")) {
             Book book = restTemplate.getForEntity(BOOK_API + "title?title=" + title, Book.class).getBody();
-            //connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
             if (book != null) {
                 setElementsVisibleIfFound();
                 results.getItems().clear();
                 statusResults.getItems().clear();
                 results.getItems().addAll(book.getTitle());
+
+                switch (book.getBookStatus()) {
+                    case FREE:
+                        statusResults.getItems().add("ДОСТУПНА ДЛЯ БРОНИ");
+                        break;
+                    case BOOKED:
+                        statusResults.getItems().add("ЗАБРОНИРОВАНА");
+                        break;
+                    case READING:
+                        statusResults.getItems().addAll("У ЧИТАТЕЛЯ");
+                        break;
+                }
             } else {
                 setElementsInvisibleIfNothingFound();
             }

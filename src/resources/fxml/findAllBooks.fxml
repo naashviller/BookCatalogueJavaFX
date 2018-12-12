@@ -5,16 +5,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/2.2" fx:controller="ru.ivmiit.controller.CatalogueController">
-    <ListView fx:id="panel" layoutX="25.0" layoutY="67.0" prefHeight="266.0" prefWidth="561.0000999999975"/>
-    <Text layoutX="252.0" layoutY="38.0" scaleX="2.2579123672579056" scaleY="1.9557333785030862" strokeType="OUTSIDE"
-          strokeWidth="0.0" text="Наши книги:">
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.ivmiit.controller.CatalogueController">
+    <Button fx:id="back" layoutX="241.0" layoutY="352.0" mnemonicParsing="false" onAction="#goBack" prefHeight="34.0" prefWidth="118.0" text="Назад" textAlignment="CENTER">
         <font>
-            <Font name="Calibri" size="18.0" fx:id="x1"/>
+            <Font size="16.0" fx:id="x2" />
+        </font>
+    </Button>
+
+    <Text layoutX="265.0" layoutY="45.0" scaleX="1.1616774030567134" scaleY="1.315712187958884" strokeType="OUTSIDE" strokeWidth="0.0" text="КАТАЛОГ">
+        <font>
+            <Font size="16.0" fx:id="x1" />
         </font>
     </Text>
-    <Button fx:id="back" font="$x1" layoutX="241.0" layoutY="352.0" mnemonicParsing="false" onAction="#goBack"
-            prefHeight="34.0" prefWidth="118.0" text="Назад" textAlignment="CENTER"/>
+    <ListView fx:id="results" layoutX="14.0" layoutY="84.0" prefHeight="254.0" prefWidth="377.0" />
+    <ListView fx:id="statusResults" layoutX="416.0" layoutY="84.0" prefHeight="254.0" prefWidth="158.0" />
+    <Text layoutX="473.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Автор">
+        <font>
+            <Font size="16.0" fx:id="x11" />
+        </font>
+    </Text>
+    <Text layoutX="14.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Название">
+        <font>
+            <Font size="16.0" fx:id="x12" />
+        </font>
+    </Text>
 </AnchorPane>

@@ -15,7 +15,7 @@
       <Font size="20.0" fx:id="x1" />
     </font>
   </Text>
-  <TextField fx:id="password" layoutX="174.0" layoutY="143.0" prefHeight="36.0" prefWidth="252.607421875" />
+  <PasswordField fx:id="password" layoutX="174.0" layoutY="143.0" prefHeight="36.0" prefWidth="252.607421875" />
   <Text font="$x1" layoutX="91.0" layoutY="169.0" scaleX="0.9006208323752587" scaleY="0.9992657856093979" strokeType="OUTSIDE" strokeWidth="0.0" text="Пароль" />
   <Button fx:id="buttonAuth" font="$x1" layoutX="256.0" layoutY="255.0" minHeight="26.58203125" mnemonicParsing="false" onAction="#login" prefHeight="45.0" prefWidth="93.138671875" text="Войти" />
   <Text font="$x1" layoutX="237.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Нет аккаунта?" />

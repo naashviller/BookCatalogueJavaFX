@@ -25,14 +25,23 @@
                 <Font name="Calibri" size="17.0" fx:id="x1"/>
             </font>
         </Text>
-        <Text font="$x1" layoutX="161.0" layoutY="220.0" scaleX="1.7214758962950756" scaleY="1.7093383339556996"
-              strokeType="OUTSIDE" strokeWidth="0.0" text="Все книги"/>
         <Text font="$x1" layoutX="107.0" layoutY="305.0" scaleX="1.1529259159796335" scaleY="1.7679632352941177"
               strokeType="OUTSIDE" strokeWidth="0.0" text="Забронированные книги"/>
-        <Button fx:id="findAllBooks" font="$x2" layoutX="375.0" layoutY="193.0" mnemonicParsing="false"
-                prefHeight="35.0" onAction="#findAllBooks" prefWidth="95.0" text="Перейти"/>
         <Button fx:id="findBooked" font="$x2" layoutX="375.0" layoutY="278.0"
                 mnemonicParsing="false"
                 prefHeight="35.47210693359375" onAction="#findBooked" prefWidth="95.0" text="Перейти"/>
+
+        <Button fx:id="findAllBooks" layoutX="375.0" layoutY="193.0" mnemonicParsing="false" prefHeight="35.0"
+                prefWidth="95.0" text="Перейти" onAction="#findAllBooks">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Button>
+        <Text  layoutX="161.0" layoutY="220.0" scaleX="1.7214758962950756" scaleY="1.7093383339556996" strokeType="OUTSIDE"
+              strokeWidth="0.0" text="Каталог">
+            <font>
+                <Font name="Calibri" size="17.0"/>
+            </font>
+        </Text>
     </children>
 </AnchorPane>

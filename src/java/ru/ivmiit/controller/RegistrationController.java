@@ -24,19 +24,9 @@ import java.util.ResourceBundle;
 
 public class RegistrationController extends BaseController implements Initializable {
     @FXML
-    private Text regtext;
-    @FXML
     private TextField login;
     @FXML
-    private TextField email;
-    @FXML
     private TextField password;
-    @FXML
-    private Text searchLogin;
-    @FXML
-    private Text searchEmail;
-    @FXML
-    private Text searchPassword;
     @FXML
     private Button regButton;
     @FXML
@@ -44,66 +34,48 @@ public class RegistrationController extends BaseController implements Initializa
     @FXML
     private Button back;
 
-    private RestTemplate restTemplate;
-
+    static final String REG_URL = "fxml/registration.fxml";
     private final String REG_API = "http://localhost:80/registration/";
-    private LoginForm loggedUser;
-    public static final String REG_URL = "fxml/registration.fxml";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         error.setVisible(false);
-        back.setOnAction(event -> {
-            Main.getNavigation().GoBack();
-        });
-
+        back.setOnAction(event -> Main.getNavigation().GoBack());
     }
 
     public void register(ActionEvent event) throws Exception {
+        String login = this.login.getText();
+        String password = this.password.getText();
 
-        String log = login.getText();
-        System.out.println(log);
-        String pas = password.getText();
-        String em = email.getText();
-
-        if (log.isEmpty() && pas.isEmpty() && em.isEmpty()) {
-            regtext.setVisible(false);
+        if (login.isEmpty() || password.isEmpty()) {
             error.setVisible(true);
+            return;
         }
-        if (pas != null && em != null) {
-            LoginForm form = new LoginForm(log, pas, em);
 
-            RestTemplate restTemplate = new RestTemplate();
+        RestTemplate restTemplate = new RestTemplate();
 
-            String jsonStringUser = "{"
-                    + "\"login\":" + "\"" + log + "\","
-                    + "\"password\":" + "\"" + pas + "\","
-                    + "\"email\":" + "\"" + em + "\""
-                    + "}";
+        String jsonStringUser = "{"
+                + "\"login\":" + "\"" + login + "\","
+                + "\"password\":" + "\"" + password + "\""
+                + "}";
 
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
-            HttpEntity<String> entity = new HttpEntity<String>(jsonStringUser, headers);
+        HttpEntity<String> entity = new HttpEntity<String>(jsonStringUser, headers);
 
-            String answer = restTemplate.postForObject(REG_API, entity, String.class);
-//            System.out.println(answer);
+        restTemplate.postForObject(REG_API, entity, String.class);
 
-
-            //Close current
-            Stage stage = (Stage) regButton.getScene().getWindow();
-            // do what you have to do
-            stage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/mainPage.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Главная");
-            stage.setScene(new Scene(root1));
-            stage.show();
-        }
+        //Close current
+        Stage stage = (Stage) regButton.getScene().getWindow();
+        // do what you have to do
+        stage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/mainPage.fxml"));
+        Parent root1 = fxmlLoader.load();
+        stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Главная");
+        stage.setScene(new Scene(root1));
+        stage.show();
     }
-
-
-
 }

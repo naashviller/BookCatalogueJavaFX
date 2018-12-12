@@ -14,6 +14,8 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 import ru.ivmiit.model.Book;
+import ru.ivmiit.model.enums.BookStatus;
+import ru.ivmiit.util.AuthenticationUtil;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,36 +23,39 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class BookedController extends BaseController implements Initializable {
+public class BookedBooksController extends BaseController implements Initializable {
     @FXML
-    private ListView booked;
-
+    private ListView results;
+    @FXML
+    private ListView authorsResult;
     @FXML
     private Button back;
 
-    private RestTemplate rest;
-    private final String BOOKED_API = "http://localhost:80/book/search/status";
+    private final String BOOKED_BOOKS_API = "http://localhost:80/books/search/booked";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (AuthenticationUtil.isAuthenticated())
+            return;
+
         List<HttpMessageConverter<?>> converters = new ArrayList<>();
         converters.add(new MappingJackson2HttpMessageConverter());
-        rest = new RestTemplate(converters);
+        RestTemplate restTemplate = new RestTemplate(converters);
 
-        Book[] response = rest.getForObject(BOOKED_API, Book[].class);
+        Book[] response = restTemplate.getForObject(BOOKED_BOOKS_API, Book[].class);
         List<Book> books = Arrays.asList(response);
 
-       /* if (books.equals("bookStatus"=="BOOKED")){*/
-            booked.getItems().addAll(books);
-
-        //}
-
-
+        if (books.size() > 0) {
+            results.getItems().clear();
+            authorsResult.getItems().clear();
+            for (Book book : books) {
+                if (book.getBookStatus().equals(BookStatus.BOOKED)) {
+                    results.getItems().add(book.getTitle());
+                    authorsResult.getItems().add(book.getAuthor().getName() + " " + book.getAuthor().getLastName());
+                }
+            }
+        }
     }
-
-
-
-
 
     public void goBack(ActionEvent event) throws Exception {
         Stage stage = (Stage) back.getScene().getWindow();
