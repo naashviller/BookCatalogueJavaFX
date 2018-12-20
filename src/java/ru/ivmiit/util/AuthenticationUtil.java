@@ -5,6 +5,8 @@ import org.springframework.web.client.RestTemplate;
 public class AuthenticationUtil {
     private static final String AUTH_API = "http://localhost:80/auth";
 
+    public static String token = "";
+
     public static boolean isAuthenticated() {
         RestTemplate restTemplate = new RestTemplate();
 

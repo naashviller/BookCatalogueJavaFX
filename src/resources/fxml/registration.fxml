@@ -3,7 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
             xmlns="http://javafx.com/javafx/2.2" fx:controller="ru.ivmiit.controller.RegistrationController">
     <Text fx:id="regtext" layoutX="244.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Регистрация">
         <font>
@@ -21,12 +22,4 @@
           scaleY="0.9992657856093979" strokeType="OUTSIDE" strokeWidth="0.0" text="Почта"/>
     <Button fx:id="regButton" font="$x1" layoutX="190.0" layoutY="308.0" mnemonicParsing="false" onAction="#register"
             prefHeight="36.0" prefWidth="221.0" text="Зарегистрироваться"/>
-    <Text fx:id="error" layoutX="206.0" layoutY="53.0" scaleX="2.2083403396931423" scaleY="3.0668134710601"
-          strokeType="OUTSIDE" strokeWidth="0.0" text="Пожалуйста, заполните все поля!"/>
-    <Button fx:id="back" layoutX="12.0" layoutY="344.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="82.0"
-            text="Назад">
-        <font>
-            <Font size="15.0"/>
-        </font>
-    </Button>
 </AnchorPane>

@@ -15,7 +15,6 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 import ru.ivmiit.model.Book;
 import ru.ivmiit.model.enums.BookStatus;
-import ru.ivmiit.util.AuthenticationUtil;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -35,9 +34,6 @@ public class BookedBooksController extends BaseController implements Initializab
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (AuthenticationUtil.isAuthenticated())
-            return;
-
         List<HttpMessageConverter<?>> converters = new ArrayList<>();
         converters.add(new MappingJackson2HttpMessageConverter());
         RestTemplate restTemplate = new RestTemplate(converters);

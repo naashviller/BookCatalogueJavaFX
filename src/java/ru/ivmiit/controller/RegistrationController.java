@@ -24,23 +24,33 @@ import java.util.ResourceBundle;
 
 public class RegistrationController extends BaseController implements Initializable {
     @FXML
+    public Text regtext;
+    @FXML
+    public Text searchLogin;
+    @FXML
+    public Text searchPassword;
+    @FXML
+    public Text searchEmail;
+    @FXML
+    public TextField email;
+    @FXML
     private TextField login;
     @FXML
     private TextField password;
     @FXML
     private Button regButton;
-    @FXML
+    /*@FXML
     private Text error;
     @FXML
     private Button back;
-
+*/
     static final String REG_URL = "fxml/registration.fxml";
     private final String REG_API = "http://localhost:80/registration/";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        error.setVisible(false);
-        back.setOnAction(event -> Main.getNavigation().GoBack());
+        /*error.setVisible(false);
+        back.setOnAction(event -> Main.getNavigation().GoBack());*/
     }
 
     public void register(ActionEvent event) throws Exception {
@@ -48,7 +58,7 @@ public class RegistrationController extends BaseController implements Initializa
         String password = this.password.getText();
 
         if (login.isEmpty() || password.isEmpty()) {
-            error.setVisible(true);
+            //error.setVisible(true);
             return;
         }
 
@@ -70,7 +80,7 @@ public class RegistrationController extends BaseController implements Initializa
         Stage stage = (Stage) regButton.getScene().getWindow();
         // do what you have to do
         stage.close();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/mainPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/authorization.fxml"));
         Parent root1 = fxmlLoader.load();
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);

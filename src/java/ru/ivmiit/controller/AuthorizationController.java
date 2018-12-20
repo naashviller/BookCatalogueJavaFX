@@ -1,6 +1,5 @@
 package ru.ivmiit.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,22 +9,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.client.RestTemplate;
 import ru.ivmiit.app.Main;
 import ru.ivmiit.dto.TokenDto;
-import ru.ivmiit.model.form.LoginForm;
+import ru.ivmiit.util.AuthenticationUtil;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -36,8 +28,6 @@ public class AuthorizationController extends BaseController implements Initializ
 
     public static final String REG_URL = "registration.fxml";
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
     @FXML
     private TextField login;
     @FXML
@@ -76,7 +66,6 @@ public class AuthorizationController extends BaseController implements Initializ
                 + "\"password\":" + "\"" + password.getText() + "\""
                 + "}";
 
-        System.out.println(authenticationData);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(authenticationData, headers);
@@ -84,6 +73,7 @@ public class AuthorizationController extends BaseController implements Initializ
         TokenDto token = restTemplate.postForObject(AUTH_API, entity, TokenDto.class);
 
         if (token.getToken() != null) {
+            AuthenticationUtil.token = token.getToken();
             Stage stage = (Stage) buttonAuth.getScene().getWindow();
             stage.close();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/mainPage.fxml"));

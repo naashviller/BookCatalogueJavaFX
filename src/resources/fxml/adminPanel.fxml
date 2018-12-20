@@ -7,44 +7,35 @@
 <?import java.lang.String?>
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/2.2" fx:controller="ru.ivmiit.controller.AddBookController">
-    <children>
-        <Text layoutX="225.0" layoutY="51.0" scaleX="1.6183155522665498" scaleY="1.3759177679882526"
-              strokeType="OUTSIDE" strokeWidth="0.0" text="Добавить книгу">
-            <font>
-                <Font size="18.0"/>
-            </font>
-        </Text>
-        <TextField fx:id="title" layoutX="190.0" layoutY="96.0" prefHeight="33.989013671875"
-                   prefWidth="209.3837890625"/>
-        <Text layoutX="42.0" layoutY="125.0" scaleX="1.6190953149076903" scaleY="1.8252947218892412"
-              strokeType="OUTSIDE" strokeWidth="0.0" text="Название">
-            <font>
-                <Font size="14.0" fx:id="x1"/>
-            </font>
-        </Text>
-        <Text font="$x1" layoutX="47.0" layoutY="191.0" scaleX="1.7939046310230617" scaleY="1.607929519600448"
-              strokeType="OUTSIDE" strokeWidth="0.0" text="Жанр"/>
-        <TextField fx:id="genre" layoutX="190.0" layoutY="170.0" prefHeight="34.0" prefWidth="210.0"/>
-        <Text font="$x1" layoutX="45.0" layoutY="276.0" scaleX="1.5464506953223767" scaleY="1.590727921124397"
-              strokeType="OUTSIDE" strokeWidth="0.0" text="Автор"/>
-        <Button fx:id="buttonAdd" layoutX="474.0" layoutY="34.0" mnemonicParsing="false" onAction="#addBook"
-                prefHeight="32.94140625" prefWidth="94.0" text="Добавить">
-            <font>
-                <Font size="15.0" fx:id="x2"/>
-            </font>
-        </Button>
-        <Button font="$x2" layoutX="23.0" layoutY="34.0" mnemonicParsing="false" onAction="#back" prefHeight="33.0"
-                prefWidth="83.0" text="Назад"/>
-        <ComboBox fx:id="comboBox" layoutX="190.0" layoutY="255.0" minHeight="10.013671875" prefHeight="34.0"
-                  prefWidth="210.0">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Item 1"/>
-                    <String fx:value="Item 2"/>
-                    <String fx:value="Item 3"/>
-                </FXCollections>
-            </items>
-        </ComboBox>
-    </children>
+            xmlns="http://javafx.com/javafx/2.2" fx:controller="ru.ivmiit.controller.AdminController">
+    <Text layoutX="225.0" layoutY="51.0" scaleX="1.6183155522665498" scaleY="1.3759177679882526"
+          strokeType="OUTSIDE" strokeWidth="0.0" text="Добавить книгу">
+        <font>
+            <Font size="18.0"/>
+        </font>
+    </Text>
+    <TextField fx:id="title" layoutX="190.0" layoutY="96.0" prefHeight="33.989013671875"
+               prefWidth="209.3837890625"/>
+    <Text layoutX="42.0" layoutY="125.0" scaleX="1.6190953149076903" scaleY="1.8252947218892412"
+          strokeType="OUTSIDE" strokeWidth="0.0" text="Название">
+        <font>
+            <Font size="14.0" fx:id="x1"/>
+        </font>
+    </Text>
+    <Text font="$x1" layoutX="47.0" layoutY="191.0" scaleX="1.7939046310230617" scaleY="1.607929519600448"
+          strokeType="OUTSIDE" strokeWidth="0.0" text="Жанр"/>
+    <TextField fx:id="genre" layoutX="190.0" layoutY="170.0" prefHeight="34.0" prefWidth="210.0"/>
+    <Text font="$x1" layoutX="45.0" layoutY="276.0" scaleX="1.5464506953223767" scaleY="1.590727921124397"
+          strokeType="OUTSIDE" strokeWidth="0.0" text="Автор"/>
+    <Button fx:id="buttonAdd" layoutX="474.0" layoutY="34.0" mnemonicParsing="false" onAction="#addBook"
+            prefHeight="32.94140625" prefWidth="94.0" text="Добавить">
+        <font>
+            <Font size="15.0" fx:id="x2"/>
+        </font>
+    </Button>
+    <Button fx:id="back" font="$x2" layoutX="23.0" layoutY="34.0" mnemonicParsing="false" onAction="#goBack" prefHeight="33.0"
+            prefWidth="83.0" text="Назад"/>
+    <ComboBox fx:id="authorsComboBox" layoutX="190.0" layoutY="255.0" minHeight="10.013671875" prefHeight="34.0"
+              prefWidth="210.0">
+    </ComboBox>
 </AnchorPane>
