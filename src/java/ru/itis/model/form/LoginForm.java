@@ -1,4 +1,4 @@
-package ru.ivmiit.model.form;
+package ru.itis.model.form;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +10,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 public class LoginForm {
-    private String login;
-    private String password;
+
+  private String login;
+  private String password;
 }

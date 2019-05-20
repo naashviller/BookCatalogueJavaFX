@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
+<?import java.net.URL?>
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/2.2" fx:controller="ru.ivmiit.controller.RegistrationController">
+            xmlns="http://javafx.com/javafx/2.2" fx:controller="ru.itis.controller.RegistrationController">
     <Text fx:id="regtext" layoutX="244.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Регистрация">
         <font>
             <Font size="20.0" fx:id="x1"/>
@@ -14,7 +17,7 @@
     <TextField fx:id="login" layoutX="174.0" layoutY="81.0" prefHeight="36.0" prefWidth="252.607421875"/>
     <Text fx:id="searchLogin" font="$x1" layoutX="92.0" layoutY="107.0" scaleX="0.9006208323752587"
           scaleY="0.9992657856093979" strokeType="OUTSIDE" strokeWidth="0.0" text="Логин"/>
-    <TextField fx:id="password" layoutX="174.0" layoutY="143.0" prefHeight="36.0" prefWidth="252.607421875"/>
+    <PasswordField fx:id="password" layoutX="174.0" layoutY="143.0" prefHeight="36.0" prefWidth="252.607421875"/>
     <Text fx:id="searchPassword" font="$x1" layoutX="91.0" layoutY="169.0" scaleX="0.9006208323752587"
           scaleY="0.9992657856093979" strokeType="OUTSIDE" strokeWidth="0.0" text="Пароль"/>
     <TextField fx:id="email" layoutX="174.0" layoutY="200.0" prefHeight="36.0" prefWidth="252.607421875"/>
@@ -22,4 +25,8 @@
           scaleY="0.9992657856093979" strokeType="OUTSIDE" strokeWidth="0.0" text="Почта"/>
     <Button fx:id="regButton" font="$x1" layoutX="190.0" layoutY="308.0" mnemonicParsing="false" onAction="#register"
             prefHeight="36.0" prefWidth="221.0" text="Зарегистрироваться"/>
+    <stylesheets>
+        <URL value="@../css/reg.css"/>
+    </stylesheets>
+
 </AnchorPane>

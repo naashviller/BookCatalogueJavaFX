@@ -1,23 +1,27 @@
-package ru.ivmiit.controller;
+package ru.itis.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
-import ru.ivmiit.app.Main;
-import ru.ivmiit.dto.TokenDto;
-import ru.ivmiit.util.AuthenticationUtil;
+import ru.itis.app.Main;
+import ru.itis.dto.TokenDto;
+import ru.itis.util.AuthenticationUtil;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -59,8 +63,7 @@ public class AuthorizationController extends BaseController implements Initializ
         this.restTemplate = new RestTemplate();
     }
 
-    @FXML
-    public void login() throws Exception {
+    public void login(ActionEvent event) throws Exception {
         String authenticationData = "{"
                 + "\"login\":" + "\"" + login.getText() + "\","
                 + "\"password\":" + "\"" + password.getText() + "\""
@@ -69,10 +72,15 @@ public class AuthorizationController extends BaseController implements Initializ
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(authenticationData, headers);
+        TokenDto token;
 
-        TokenDto token = restTemplate.postForObject(AUTH_API, entity, TokenDto.class);
+        try {
+            token = restTemplate.postForObject(AUTH_API, entity, TokenDto.class);
+        } catch (Exception e) {
+            token = null;
+        }
 
-        if (token.getToken() != null) {
+        if (token != null) {
             AuthenticationUtil.token = token.getToken();
             Stage stage = (Stage) buttonAuth.getScene().getWindow();
             stage.close();
@@ -83,11 +91,30 @@ public class AuthorizationController extends BaseController implements Initializ
             stage.setTitle("Главная");
             stage.setScene(new Scene(root1));
             stage.show();
+        } else {
+            Label wrongEmPas = new Label("Неправильный логин или пароль");
+            StackPane emPaLayout = new StackPane();
+            emPaLayout.getChildren().add(wrongEmPas);
+            Scene emScene = new Scene(emPaLayout);
+            Stage windowEmPas = new Stage();
+            windowEmPas.setTitle("Ограничение на email");
+            windowEmPas.setScene(emScene);
+            windowEmPas.initModality(Modality.APPLICATION_MODAL);
+            windowEmPas.initOwner(((Node) event.getSource()).getScene().getWindow());
+            windowEmPas.setX(((Node) event.getSource()).getScene().getWindow().getX() + 100);
+            windowEmPas.setY(((Node) event.getSource()).getScene().getWindow().getY() + 100);
+            windowEmPas.show();
+            windowEmPas.setOnCloseRequest((WindowEvent windowEvent) -> {
+                //Close current
+                Stage stage = (Stage) buttonAuth.getScene().getWindow();
+                stage.show();
+            });
         }
     }
 
     @FXML
     public void reg() {
-        buttonReg.setOnAction(event -> Main.getNavigation().load(RegistrationController.REG_URL).Show());
+        buttonReg
+                .setOnAction(event -> Main.getNavigation().load(RegistrationController.REG_URL).Show());
     }
 }

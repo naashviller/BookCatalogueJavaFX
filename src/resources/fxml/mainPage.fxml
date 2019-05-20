@@ -1,40 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.ivmiit.controller.MainPageController">
-    <Text layoutX="226.0" layoutY="58.0" scaleX="2.570573074763939" scaleY="2.1486376033681576" strokeType="OUTSIDE" strokeWidth="0.0" text="Главная страница">
+<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.itis.controller.MainPageController">
+    <Text fontSmoothingType="LCD" layoutX="226.0" layoutY="58.0" scaleX="2.570573074763939" scaleY="2.1486376033681576"
+          strokeType="OUTSIDE" strokeWidth="0.0" text="Главная страница">
         <font>
-            <Font size="18.0" />
+            <Font name="Cambria Math" size="15.0"/>
         </font>
     </Text>
-    <Button fx:id="findBook" layoutX="375.0" layoutY="111.0" mnemonicParsing="false" onAction="#findBook" prefHeight="35.0" prefWidth="95.0" text="Перейти">
+    <Button fx:id="findBook" layoutX="375.0" layoutY="111.0" mnemonicParsing="false" onAction="#findBook"
+            prefHeight="40.0" prefWidth="147.07498168945312" text="Перейти">
         <font>
-            <Font size="14.0" fx:id="x2" />
+            <Font size="14.0" fx:id="x2"/>
         </font>
     </Button>
-    <Text layoutX="125.0" layoutY="134.0" scaleX="1.54852416579221" scaleY="1.767962867266436" strokeType="OUTSIDE" strokeWidth="0.0" text="Найти книгу">
+    <Text layoutX="125.0" layoutY="134.0" scaleX="1.54852416579221" scaleY="1.767962867266436" strokeType="OUTSIDE"
+          strokeWidth="0.0" style="" text="Найти книгу">
         <font>
-            <Font size="17.0" fx:id="x1" />
+            <Font name="Cambria Math" size="17.0" fx:id="x1"/>
         </font>
     </Text>
-    <Text font="$x1" layoutX="113.0" layoutY="252.0" scaleX="1.1529259159796335" scaleY="1.7679632352941177" strokeType="OUTSIDE" strokeWidth="0.0" text="Забронированные книги" />
-    <Button fx:id="admin" font="$x2" layoutX="375.0" layoutY="287.0" mnemonicParsing="false" onAction="#addBook" prefHeight="35.47210693359375" prefWidth="95.0" text="Перейти" />
-
-    <Button fx:id="findAllBooks" layoutX="375.0" layoutY="170.0" mnemonicParsing="false" onAction="#findAllBooks" prefHeight="35.0" prefWidth="95.0" text="Перейти">
-        <font>
-            <Font size="14.0" />
-        </font>
-    </Button>
-    <Text layoutX="120.0" layoutY="193.0" scaleX="1.7214758962950756" scaleY="1.7093383339556996" strokeType="OUTSIDE" strokeWidth="0.0" text="Каталог">
-        <font>
-            <Font size="17.0" />
-        </font>
-    </Text>
-
-    <Text fx:id="addBookText" font="$x1" layoutX="111.0" layoutY="311.0" scaleX="1.1529259159796335" scaleY="1.7679632352941177" strokeType="OUTSIDE" strokeWidth="0.0" text="Добавить книгу" />
-    <Button fx:id="findBooked" font="$x2" layoutX="375.0" layoutY="228.0" mnemonicParsing="false" onAction="#findBooked" prefHeight="35.47210693359375" prefWidth="95.0" text="Перейти" />
+    <Text font="$x1" layoutX="112.0" layoutY="252.0" scaleX="1.1529259159796335" scaleY="1.7679632352941177"
+          strokeType="OUTSIDE" strokeWidth="0.0" text="Забронированные книги"/>
+    <Button fx:id="admin" font="$x2" layoutX="375.0" layoutY="287.0" mnemonicParsing="false" onAction="#addBook"
+            prefHeight="40.0" prefWidth="148.0" text="Перейти"/>
+    <Button fx:id="findAllBooks" font="$x2" layoutX="375.0" layoutY="170.0" mnemonicParsing="false"
+            onAction="#findAllBooks" prefHeight="40.0" prefWidth="147.07498168945312" text="Перейти"/>
+    <Text font="$x1" fontSmoothingType="LCD" layoutX="120.0" layoutY="193.0" scaleX="1.7214758962950756"
+          scaleY="1.7093383339556996" strokeType="OUTSIDE" strokeWidth="0.0" text="Каталог"/>
+    <Text fx:id="addBookText" font="$x1" layoutX="111.0" layoutY="311.0" scaleX="1.1529259159796335"
+          scaleY="1.7679632352941177" strokeType="OUTSIDE" strokeWidth="0.0" text="Добавить книгу"/>
+    <Button fx:id="findBooked" font="$x2" layoutX="375.0" layoutY="228.0" mnemonicParsing="false" onAction="#findBooked"
+            prefHeight="40.0" prefWidth="147.07498168945312" text="Перейти"/>
+    <Button fx:id="logout" onAction="#logoutAction" layoutX="10.0" layoutY="346.0" mnemonicParsing="false"
+            text="Выйти"/>
+    <stylesheets>
+        <URL value="@../css/mainPage.css"/>
+    </stylesheets>
 </AnchorPane>
